@@ -36,7 +36,7 @@ export function LoginPage() {
 
   return (
     <div className="mx-auto flex h-screen max-w-4xl flex-col items-center justify-center space-y-2">
-      <h2 className="text-xl font-bold tracking-wider text-lime-500">
+      <h2 className="text-2xl font-bold tracking-wider text-lime-500">
         ACESSE SUA CONTA
       </h2>
 
@@ -103,10 +103,10 @@ export function LoginPage() {
         </button>
       </form>
 
-      {/* LINHAS */}
+      {/* LINK */}
       <div className="flex w-full flex-col items-center space-y-4">
         <div className="h-[1px] w-[80%] bg-zinc-600" />
-        <div className="flex space-x-2">
+        <div className="flex items-center space-x-2">
           <p className="text-lg text-zinc-300">Primeira vez no site?</p>
           <Link to={"/register"}>
             <span className="font-bold text-lime-500 hover:text-lime-600">
