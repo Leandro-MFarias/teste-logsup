@@ -15,7 +15,7 @@ export function createSessionCookies(res, user) {
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
     sameSite: "None",
-    secure: true,
+    secure: false,
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
@@ -29,7 +29,7 @@ export function logoutSession(req, res) {
   res.cookie("accessToken", null, {
     httpOnly: true,
     sameSite: "None",
-    secure: true,
+    secure: false,
     path: "/",
     maxAge: 0,
   });
