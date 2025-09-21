@@ -1,4 +1,4 @@
-# --- Node.js / Backend ---
+# --- Node.js (Backend & Frontend) ---
 node_modules/
 dist/
 build/
@@ -7,41 +7,29 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Prisma
+# --- Vite (Frontend) ---
+frontend/dist/
+frontend/.vite/
+vite.config.ts.timestamp-*
+
+# --- Prisma (Backend) ---
 /prisma/migrations/
 /prisma/dev.db
 /dev.db-journal
 
-# --- Next.js / Frontend ---
-frontend/.next/
-frontend/out/
-frontend/build/
-frontend/coverage/
+# --- Coverage / Testes ---
+coverage/
 
-# Yarn / pnpm stuff
-.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# Misc
+# --- Misc ---
 .DS_Store
 *.pem
 
-# Env files
+# --- Env files ---
 .env
 .env.*
 .env.local
 .env.development
 .env.production
-.env.test
 
-# Vercel
-.vercel/
-
-# TypeScript
+# --- TypeScript ---
 *.tsbuildinfo
-next-env.d.ts
