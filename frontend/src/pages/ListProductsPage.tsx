@@ -1,8 +1,9 @@
+import { SideBar } from "@/components/ui/sidebar";
 
 export function ListProductsPage() {
   return (
-    <div>
-      LISTA DE PRODUTOS
+    <div className="h-screen ">
+      <SideBar />
     </div>
   )
 }

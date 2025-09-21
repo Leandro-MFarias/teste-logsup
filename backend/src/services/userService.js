@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
-import { LoginSchema, RegisterSchema } from "../types/authSchema.js";
+import { loginSchema, registerSchema } from "../types/authSchema.js";
 import * as userModel from "../models/userModel.js";
 
 export async function createUser(data) {
-  const { name, email, password } = RegisterSchema.parse(data);
+  const { name, email, password } = registerSchema.parse(data);
 
   const existingUser = await userModel.findByEmail(email);
   if (existingUser) {
@@ -24,7 +24,7 @@ export async function createUser(data) {
 }
 
 export async function signIn(data) {
-  const { email, password } = LoginSchema.parse(data);
+  const { email, password } = loginSchema.parse(data);
 
   const user = await userModel.findByEmail(email);
 

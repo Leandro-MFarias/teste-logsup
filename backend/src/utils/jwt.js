@@ -14,7 +14,7 @@ export function createSessionCookies(res, user) {
 
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
-    sameSite: "None",
+    sameSite: "Lax",
     secure: false,
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
