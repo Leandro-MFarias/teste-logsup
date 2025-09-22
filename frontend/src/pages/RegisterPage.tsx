@@ -53,12 +53,12 @@ export function RegisterPage() {
           <input
             type="text"
             id="fullname"
-            {...register("fullname")}
+            {...register("name")}
             placeholder="Coloque nome e sobrenome"
             className="w-full rounded-sm border-2 border-zinc-400 px-2 py-3 text-zinc-400 outline-none"
           />
           <p className="h-5 font-bold text-red-500/80">
-            {errors.fullname?.message}
+            {errors.name?.message}
           </p>
         </div>
 

@@ -60,7 +60,7 @@ export function NewProduct({ product }: NewProductProps) {
       navigete("/list-products");
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error(error.message);
+        toast.error(error.response?.data?.message);
       }
     }
   }

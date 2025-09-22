@@ -22,22 +22,26 @@ import {
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useProducts } from "@/services/product";
+import type { Product } from "@/types/product";
+import type { User } from "@/types/user";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
+  data: Product[] | User[]
   searchFields?: string[];
   defaultSearch?: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
+  data,
 }: DataTableProps<TData, TValue>) {
-  const { data: products, isLoading } = useProducts();
+  const { isLoading } = useProducts();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
-    data: (products ?? []) as TData[],
+    data: (data ?? []) as TData[],
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),

@@ -22,7 +22,7 @@ export function SideBar() {
 
   const nav = [
     { name: "Produtos", href: "/list-products" },
-    { name: "Usuários", href: "/admin-page/customers" },
+    { name: "Usuários", href: "/users" },
     { name: "Novo produto", href: "/new-product" },
   ];
 

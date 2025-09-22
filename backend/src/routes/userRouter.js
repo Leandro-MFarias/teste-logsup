@@ -1,13 +1,24 @@
 import { Router } from "express";
-import { createUser, getUser, signIn } from "../controllers/userController.js";
+import {
+  createUser,
+  getRoles,
+  getUser,
+  listUsers,
+  signIn,
+  updateUserRole,
+} from "../controllers/userController.js";
 import { logoutSession } from "../utils/jwt.js";
-import { auth } from "../middleware/auth.js"
+import { auth } from "../middleware/auth.js";
+import { isAdmin } from "../middleware/isAdmin.js";
 
-const router = Router()
+const router = Router();
 
-router.post("/register", createUser)
-router.post("/login", signIn)
-router.post("/logout", logoutSession)
-router.get("/me", auth, getUser)
+router.post("/users", createUser);
+router.post("/auth/login", signIn);
+router.get("/users/me", auth, getUser);
+router.get("/users", auth, listUsers);
+router.post("/auth/logout", auth, logoutSession);
+router.get("/users/roles", auth, getRoles);
+router.patch("/users/:id/role", auth, isAdmin, updateUserRole);
 
-export default router
+export default router;

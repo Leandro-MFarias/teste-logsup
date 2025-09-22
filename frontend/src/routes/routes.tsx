@@ -2,6 +2,7 @@ import { AddProductPage } from "@/pages/AddProductPage";
 import { ListProductsPage } from "@/pages/ListProductsPage";
 import { LoginPage } from "@/pages/LoginPage";
 import { RegisterPage } from "@/pages/RegisterPage";
+import { UsersPage } from "@/pages/UsersPage";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/new-product/:id?",
     element: <AddProductPage />,
+  },
+  {
+    path: "/users",
+    element: <UsersPage />,
   },
 ]);
 

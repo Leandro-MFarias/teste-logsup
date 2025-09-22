@@ -4,7 +4,8 @@ import { DataTable } from "./datatable";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { formatPrice } from "@/utils/formatPrice";
-import { ActionsCell } from "./actionsCell";
+import { ActionsProductCell } from "./actionsProductCell";
+import { useProducts } from "@/services/product";
 
 const columns: ColumnDef<Product>[] = [
   {
@@ -93,10 +94,12 @@ const columns: ColumnDef<Product>[] = [
   },
   {
     header: "Ações",
-    cell: ({ row }) => <ActionsCell product={row.original} />,
+    cell: ({ row }) => <ActionsProductCell product={row.original} />,
   },
 ];
 
 export function ProducsDataTable() {
-  return <DataTable columns={columns} />;
+  const { data: products } = useProducts();
+
+  return <DataTable columns={columns} data={products} />;
 }

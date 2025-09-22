@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { auth } from "../middleware/auth.js";
+import { isSupervisor } from "../middleware/isSupervisor.js";
 import {
   createProduct,
   deleteProduct,
@@ -10,10 +11,11 @@ import {
 
 const router = Router();
 
-router.get("/products", getProducts);
-router.get("/products/:id", getProductById);
+router.get("/products", auth, getProducts);
+router.get("/products/:id", auth, getProductById);
 router.post("/products", auth, createProduct);
-router.delete("/products/:id", deleteProduct);
-router.put("/products/:id", updateProduct)
+
+router.put("/products/:id", auth, isSupervisor, updateProduct);
+router.delete("/products/:id", auth, isSupervisor, deleteProduct);
 
 export default router;

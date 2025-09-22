@@ -2,7 +2,7 @@ import z4 from "zod/v4";
 
 export const registerSchema = z4
   .object({
-    fullname: z4
+    name: z4
       .string()
       .trim()
       .refine((value) => value.split(/\s+/).length >= 2, {
