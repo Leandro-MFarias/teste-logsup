@@ -40,7 +40,7 @@ export function SideBar() {
     <>
       <nav className="hidden h-full max-w-[320px] min-w-[280px] flex-col justify-between border-r border-zinc-600 px-6 pt-14 pb-8 md:flex">
         <div className="flex flex-col space-y-16">
-          <Link to={"/"}>
+          <Link to={"/list-products"}>
             <h1 className="text-3xl font-bold text-lime-500">Logs Up</h1>
           </Link>
 
@@ -59,7 +59,9 @@ export function SideBar() {
               </Link>
             ))}
             <p className="text-center text-xl">Bem Vindo</p>
-            <p className="font-bold text-zinc-200">{user?.name}</p>
+
+            <p className="font-bold text-zinc-300">{user?.name}</p>
+            <p className="font-bold text-zinc-400">Cargo: {user?.role}</p>
           </div>
         </div>
 
@@ -81,7 +83,7 @@ export function SideBar() {
         >
           <SheetHeader>
             <SheetTitle>
-              <Link to={"/"}>
+              <Link to={"/list-products"}>
                 <h1 className="text-3xl font-bold text-lime-500">Logs Up</h1>
               </Link>
             </SheetTitle>
@@ -100,10 +102,16 @@ export function SideBar() {
                   )}
                 </Link>
               ))}
+              <p className="text-center text-xl">Bem Vindo</p>
+              <div className="flex space-x-2">
+                <p className="font-bold text-zinc-300">{user?.name}</p>
+                <span>-</span>
+                <p className="font-bold text-zinc-400">{user?.role}</p>
+              </div>
             </div>
           </SheetHeader>
           <button
-            onClick={() => logout()}
+            onClick={handleLogout}
             className="flex cursor-pointer items-center space-x-2 pl-4 text-xl transition-all duration-150 ease-in hover:-translate-y-1"
           >
             <DoorOpen />

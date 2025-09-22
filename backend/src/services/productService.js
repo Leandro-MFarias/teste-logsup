@@ -9,8 +9,20 @@ export async function createProduct(data, userId) {
     description,
     price,
     stock,
-    userId
+    userId,
   });
 
   return { message: "Produto adicionado!" };
+}
+
+export async function getProducts() {
+  const result = await productModel.products();
+
+  if (!result) {
+    const error = new Error("Erro ao buscar produtos");
+    error.status = 400;
+    throw error;
+  }
+
+  return result;
 }

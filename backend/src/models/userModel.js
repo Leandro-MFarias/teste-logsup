@@ -15,6 +15,7 @@ export const getUser = (userId) => {
     where: { id: userId },
     select: {
       name: true,
+      role: true,
     }
   })
 }

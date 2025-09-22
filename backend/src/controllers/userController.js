@@ -26,7 +26,11 @@ export async function signIn(req, res) {
 }
 
 export async function getUser(req, res) {
-  const user = await userService.getInfoUser(req.userId);
-
-  return res.status(200).json(user);
+  try {
+    const user = await userService.getInfoUser(req.userId);
+  
+    return res.status(200).json(user);
+  } catch (error) {
+    res.status(error.status | 500).json({ message: error.message })
+  }
 }

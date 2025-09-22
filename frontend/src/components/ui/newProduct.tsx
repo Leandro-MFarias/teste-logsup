@@ -1,7 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import { productSchema, type ProductSchema } from "@/types/productSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { useProductsStore } from "@/store/products";
 import { useNavigate } from "react-router";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -12,7 +11,6 @@ import axios from "axios";
 export function NewProduct() {
   const { mutateAsync: createProduct } = useNewProduct();
   const navigete = useNavigate();
-  // const { getProducts } = useProductsStore();
 
   const {
     register,
@@ -32,9 +30,8 @@ export function NewProduct() {
   async function handleForm(data: ProductSchema) {
     try {
       const result = await createProduct(data);
-      toast.success(`${result.message}`);
 
-      // await getProducts(true);
+      toast.success(`${result.message}`);
       navigete("/list-products");
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -83,9 +80,7 @@ export function NewProduct() {
               name="price"
               render={({ field }) => (
                 <MoneyInput
-                  onValueChange={(values) =>
-                    field.onChange(values.value)
-                  }
+                  onValueChange={(values) => field.onChange(values.value)}
                   className="w-full rounded-sm border-2 border-zinc-400 px-2 py-2 text-zinc-300 outline-none"
                 />
               )}

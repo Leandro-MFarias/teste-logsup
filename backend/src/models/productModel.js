@@ -5,3 +5,15 @@ const prisma = new PrismaClient();
 export const create = (data) => {
   return prisma.product.create({ data });
 };
+
+export const products = () => {
+  return prisma.product.findMany({
+    include: {
+      user: {
+        select: {
+          name: true
+        }
+      }
+    }
+  })
+}
