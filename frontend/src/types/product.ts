@@ -1,12 +1,16 @@
 export type Product = {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   price: number;
   stock: number;
-  createdAt: string;
-  userId: string;
-  user: {
+  createdAt?: string;
+  user?: {
     name: string;
   };
 };
+
+export interface ProductProp {
+  data: Product
+  productId: string
+}

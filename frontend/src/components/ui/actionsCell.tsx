@@ -12,15 +12,35 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
+import { toast } from "sonner";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 export function ActionsCell({ product }: { product: Product }) {
   const [isOpen, setIsOpen] = useState(false);
   const { mutateAsync: deleteItem } = useDeleteProduct();
+  const navigate = useNavigate();
+
+  async function handleDelete() {
+    try {
+      if (!product.id) return;
+      const response = await deleteItem(product.id);
+
+      toast.success(response.message);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.message);
+      }
+    }
+  }
 
   return (
     <>
       <div className="flex items-center space-x-2">
-        <button className="text-muted-foreground">
+        <button
+          onClick={() => navigate(`/new-product/${product.id}`)}
+          className="text-muted-foreground"
+        >
           <SquarePen size={16} />
         </button>
         <button
@@ -38,7 +58,7 @@ export function ActionsCell({ product }: { product: Product }) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deleteItem(product.id)}>
+            <AlertDialogAction onClick={handleDelete}>
               Continuar
             </AlertDialogAction>
           </AlertDialogFooter>

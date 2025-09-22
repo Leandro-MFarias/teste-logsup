@@ -5,31 +5,56 @@ import { useNavigate } from "react-router";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { MoneyInput } from "./moneyInput";
-import { useNewProduct } from "@/services/product";
+import { useNewProduct, useUpdateProduct } from "@/services/product";
 import axios from "axios";
+import type { Product } from "@/types/product";
+import { useEffect } from "react";
 
-export function NewProduct() {
+interface NewProductProps {
+  product?: Product;
+}
+
+export function NewProduct({ product }: NewProductProps) {
   const { mutateAsync: createProduct } = useNewProduct();
+  const { mutateAsync: updateProduct } = useUpdateProduct();
   const navigete = useNavigate();
 
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<ProductSchema>({
     resolver: zodResolver(productSchema),
     defaultValues: {
-      price: 0,
-      stock: 1,
-      description: "",
-      name: "",
+      price: product?.price ?? 0,
+      stock: product?.stock ?? 1,
+      description: product?.description ?? "",
+      name: product?.name ?? "",
     },
   });
 
+  useEffect(() => {
+    if (product) {
+      reset({
+        price: product.price,
+        stock: product.stock,
+        description: product.description,
+        name: product.name,
+      });
+    }
+  }, [product, reset]);
+
   async function handleForm(data: ProductSchema) {
     try {
-      const result = await createProduct(data);
+      let result;
+
+      if (product?.id) {
+        result = await updateProduct({ productId: product.id, data });
+      } else {
+        result = await createProduct(data);
+      }
 
       toast.success(`${result.message}`);
       navigete("/list-products");

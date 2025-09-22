@@ -11,13 +11,33 @@ export const products = () => {
     include: {
       user: {
         select: {
-          name: true
-        }
-      }
-    }
-  })
-}
+          name: true,
+        },
+      },
+    },
+  });
+};
+
+export const getProductById = (id) => {
+  return prisma.product.findUnique({
+    where: { id },
+    include: {
+      user: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
+};
 
 export const deleteProduct = (productId) => {
-  return prisma.product.delete({ where: {id: productId} })
-}
+  return prisma.product.delete({ where: { id: productId } });
+};
+
+export const updateProduct = (productId, data) => {
+  return prisma.product.update({
+    where: { id: productId },
+    data,
+  });
+};

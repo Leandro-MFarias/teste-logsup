@@ -27,8 +27,32 @@ export async function getProducts() {
   return result;
 }
 
+export async function getProductById(productId) {
+  const product = await productModel.getProductById(productId);
+  
+  if (!product) {
+    const error = new Error("Produto não encontrado");
+    error.status = 404;
+    throw error;
+  }
+
+  return product;
+}
+
+export async function updateProduct(productId, data) {
+  const result = await productModel.updateProduct(productId, data);
+
+  if (!result) {
+    const error = new Error("Produto não encontrado");
+    error.status = 400;
+    throw error;
+  }
+
+  return { message: "Produto atualizado." };
+}
+
 export async function deleteProduct(productId) {
   await productModel.deleteProduct(productId);
 
-  return { message: "Produto Deletado!" }
+  return { message: "Produto Deletado!" };
 }
