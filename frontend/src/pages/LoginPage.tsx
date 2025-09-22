@@ -1,4 +1,4 @@
-import { useLogin } from "@/services/auth";
+import { useLogin } from "@/services/user";
 import { loginSchema, type LoginSchema } from "@/types/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";

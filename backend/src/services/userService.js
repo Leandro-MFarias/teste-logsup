@@ -44,3 +44,15 @@ export async function signIn(data) {
 
   return user;
 }
+
+export async function getInfoUser(userId) {
+  const user = await userModel.getUser(userId)
+
+  if (!user) {
+    const error = new Error("Erro ao buscar informações")
+    error.status = 400
+    throw error
+  }
+
+  return user
+}

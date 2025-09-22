@@ -1,4 +1,4 @@
-import { useRegister } from "@/services/auth";
+import { useRegister } from "@/services/user";
 import { type RegisterSchema, registerSchema } from "@/types/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";

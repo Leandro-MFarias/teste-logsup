@@ -6,17 +6,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useLogout, useUser } from "@/services/user";
 import { useNavPage } from "@/store/nav";
-// import { useUserStore } from "@/store/user";
 import { DoorOpen, MenuIcon } from "lucide-react";
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 export function SideBar() {
-  // const { logout } = useUserStore();
-  const location = useLocation()
+  const { data: user } = useUser();
+  const logout = useLogout();
+  const location = useLocation();
   const pathname = location.pathname;
   const { page, changePage } = useNavPage();
+  const navigate = useNavigate();
 
   const nav = [
     { name: "Produtos", href: "/list-products" },
@@ -29,9 +31,14 @@ export function SideBar() {
     if (currentIndex !== -1) changePage(currentIndex);
   }, [pathname]);
 
+  function handleLogout() {
+    logout();
+    navigate("/");
+  }
+
   return (
     <>
-      <nav className="hidden h-full min-w-[280px] max-w-[320px] flex-col justify-between border-r border-zinc-600 px-6 pt-14 pb-8 md:flex">
+      <nav className="hidden h-full max-w-[320px] min-w-[280px] flex-col justify-between border-r border-zinc-600 px-6 pt-14 pb-8 md:flex">
         <div className="flex flex-col space-y-16">
           <Link to={"/"}>
             <h1 className="text-3xl font-bold text-lime-500">Logs Up</h1>
@@ -51,11 +58,13 @@ export function SideBar() {
                 )}
               </Link>
             ))}
+            <p className="text-center text-xl">Bem Vindo</p>
+            <p className="font-bold text-zinc-200">{user?.name}</p>
           </div>
         </div>
 
         <button
-          // onClick={() => logout()}
+          onClick={handleLogout}
           className="flex cursor-pointer items-center space-x-2 transition-all duration-150 ease-in hover:-translate-y-1"
         >
           <DoorOpen />
@@ -73,9 +82,7 @@ export function SideBar() {
           <SheetHeader>
             <SheetTitle>
               <Link to={"/"}>
-                <h1 className="text-3xl font-bold text-lime-500">
-                  Logs Up
-                </h1>
+                <h1 className="text-3xl font-bold text-lime-500">Logs Up</h1>
               </Link>
             </SheetTitle>
             <SheetDescription></SheetDescription>
@@ -96,7 +103,7 @@ export function SideBar() {
             </div>
           </SheetHeader>
           <button
-            // onClick={() => logout()}
+            onClick={() => logout()}
             className="flex cursor-pointer items-center space-x-2 pl-4 text-xl transition-all duration-150 ease-in hover:-translate-y-1"
           >
             <DoorOpen />

@@ -9,3 +9,12 @@ export const findByEmail = (email) => {
 export const create = (data) => {
   return prisma.user.create({ data })
 }
+
+export const getUser = (userId) => {
+  return prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      name: true,
+    }
+  })
+}
