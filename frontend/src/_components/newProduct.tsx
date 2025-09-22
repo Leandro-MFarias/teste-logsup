@@ -5,10 +5,10 @@ import { useNavigate } from "react-router";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { MoneyInput } from "./moneyInput";
-import { useNewProduct, useUpdateProduct } from "@/services/product";
 import axios from "axios";
 import type { Product } from "@/types/product";
 import { useEffect } from "react";
+import { useNewProduct, useUpdateProduct } from "@/hooks/productHooks";
 
 interface NewProductProps {
   product?: Product;

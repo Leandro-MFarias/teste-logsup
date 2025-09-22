@@ -1,10 +1,10 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { DataTable } from "./datatable";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import type { User } from "@/types/user";
-import { useListUsers } from "@/services/user";
+import { useListUsers } from "@/hooks/userHooks";
 import { ActionsUserCell } from "./actionsUserCell";
+import { DataTable } from "@/components/ui/datatable";
 
 const columns: ColumnDef<User>[] = [
   {

@@ -1,4 +1,3 @@
-import { useDeleteProduct } from "@/services/product";
 import type { Product } from "@/types/product";
 import { SquarePen, Trash2 } from "lucide-react";
 import {
@@ -15,7 +14,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { useUser } from "@/services/user";
+import { useUser } from "@/hooks/userHooks";
+import { useDeleteProduct } from "@/hooks/productHooks";
 
 export function ActionsProductCell({ product }: { product: Product }) {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,5 @@
-import { ProducsDataTable } from "@/components/ui/products-datatable";
-import { SideBar } from "@/components/ui/sidebar";
+import { ProducsDataTable } from "@/_components/products-datatable";
+import { SideBar } from "@/_components/sidebar";
 
 export function ListProductsPage() {
   return (

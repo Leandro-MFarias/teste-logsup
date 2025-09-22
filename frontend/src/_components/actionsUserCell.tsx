@@ -6,7 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRoles, useUpdateUserRole, useUser } from "@/services/user";
+import { useRoles, useUpdateUserRole, useUser } from "@/hooks/userHooks";
 import type { User } from "@/types/user";
 import axios from "axios";
 import { SquarePen } from "lucide-react";

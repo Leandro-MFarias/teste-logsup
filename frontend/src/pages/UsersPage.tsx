@@ -1,5 +1,5 @@
-import { SideBar } from "@/components/ui/sidebar";
-import { UsersDataTable } from "@/components/ui/users-datatable";
+import { SideBar } from "@/_components/sidebar";
+import { UsersDataTable } from "@/_components/users-datatable";
 
 export function UsersPage() {
   return (

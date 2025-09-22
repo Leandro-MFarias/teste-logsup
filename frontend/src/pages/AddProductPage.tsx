@@ -1,6 +1,6 @@
-import { NewProduct } from "@/components/ui/newProduct";
-import { SideBar } from "@/components/ui/sidebar";
-import { useProduct } from "@/services/product";
+import { NewProduct } from "@/_components/newProduct";
+import { SideBar } from "@/_components/sidebar";
+import { useProduct } from "@/hooks/productHooks";
 import { useParams } from "react-router";
 
 export function AddProductPage() {

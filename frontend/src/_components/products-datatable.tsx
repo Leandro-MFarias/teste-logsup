@@ -1,11 +1,13 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import type { Product } from "../../types/product";
-import { DataTable } from "./datatable";
+
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { formatPrice } from "@/utils/formatPrice";
+
+import { useProducts } from "@/hooks/productHooks";
+import type { Product } from "@/types/product";
 import { ActionsProductCell } from "./actionsProductCell";
-import { useProducts } from "@/services/product";
+import { DataTable } from "@/components/ui/datatable";
 
 const columns: ColumnDef<Product>[] = [
   {

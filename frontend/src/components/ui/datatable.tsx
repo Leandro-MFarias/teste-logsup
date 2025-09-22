@@ -21,9 +21,9 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { useProducts } from "@/services/product";
 import type { Product } from "@/types/product";
 import type { User } from "@/types/user";
+import { useProducts } from "@/hooks/productHooks";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

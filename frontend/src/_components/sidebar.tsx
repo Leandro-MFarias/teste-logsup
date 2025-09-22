@@ -6,7 +6,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useLogout, useUser } from "@/services/user";
+import { useLogout, useUser } from "@/hooks/userHooks";
 import { useNavPage } from "@/store/nav";
 import { DoorOpen, MenuIcon } from "lucide-react";
 import { useEffect } from "react";
@@ -103,11 +103,9 @@ export function SideBar() {
                 </Link>
               ))}
               <p className="text-center text-xl">Bem Vindo</p>
-              <div className="flex space-x-2">
-                <p className="font-bold text-zinc-300">{user?.name}</p>
-                <span>-</span>
-                <p className="font-bold text-zinc-400">{user?.role}</p>
-              </div>
+
+              <p className="font-bold text-zinc-300">{user?.name}</p>
+              <p className="font-bold text-zinc-400">Cargo: {user?.role}</p>
             </div>
           </SheetHeader>
           <button
