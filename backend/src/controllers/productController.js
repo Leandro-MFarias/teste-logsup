@@ -18,3 +18,13 @@ export async function getProducts(req, res) {
     res.status(error.status | 500).json({ message: error.message });
   }
 }
+
+export async function deleteProduct(req, res) {
+  try {
+    const result = await productService.deleteProduct(req.params.id);
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(error.status | 500).json({ message: error.message });
+  }
+}

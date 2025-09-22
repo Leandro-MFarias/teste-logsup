@@ -26,3 +26,9 @@ export async function getProducts() {
 
   return result;
 }
+
+export async function deleteProduct(productId) {
+  await productModel.deleteProduct(productId);
+
+  return { message: "Produto Deletado!" }
+}

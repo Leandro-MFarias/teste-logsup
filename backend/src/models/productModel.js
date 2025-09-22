@@ -17,3 +17,7 @@ export const products = () => {
     }
   })
 }
+
+export const deleteProduct = (productId) => {
+  return prisma.product.delete({ where: {id: productId} })
+}
