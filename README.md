@@ -230,4 +230,6 @@ O frontend foi construído para ser **rápido, responsivo e intuitivo**, consumi
 
 ## 📸 Screenshots
 
+<img src="./frontend/public/logsup-test.png">
+
 ---
