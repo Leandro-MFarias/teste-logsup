@@ -75,7 +75,7 @@ export function ActionsProductCell({ product }: { product: Product }) {
             <AlertDialogDescription></AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction onClick={handleDelete}>
               Continuar
             </AlertDialogAction>
