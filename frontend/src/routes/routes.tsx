@@ -1,3 +1,4 @@
+import { ProtectedRoute } from "@/_components/protectedRoute";
 import { AddProductPage } from "@/pages/AddProductPage";
 import { ListProductsPage } from "@/pages/ListProductsPage";
 import { LoginPage } from "@/pages/LoginPage";
@@ -15,16 +16,21 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
-    path: "/list-products",
-    element: <ListProductsPage />,
-  },
-  {
-    path: "/new-product/:id?",
-    element: <AddProductPage />,
-  },
-  {
-    path: "/users",
-    element: <UsersPage />,
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/list-products",
+        element: <ListProductsPage />,
+      },
+      {
+        path: "/new-product/:id?",
+        element: <AddProductPage />,
+      },
+      {
+        path: "/users",
+        element: <UsersPage />,
+      },
+    ],
   },
 ]);
 

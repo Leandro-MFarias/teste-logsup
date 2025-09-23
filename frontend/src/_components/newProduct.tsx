@@ -68,9 +68,9 @@ export function NewProduct({ product }: NewProductProps) {
   return (
     <form
       onSubmit={handleSubmit(handleForm)}
-      className="flex w-full flex-col items-center justify-center pr-10"
+      className="flex w-full flex-col md:items-center justify-center px-10"
     >
-      <div className="w-[60%] space-y-4">
+      <div className="md:w-[60%] space-y-4">
         {/* NAME */}
         <div className="min-w-full space-y-1">
           <label className="block">Nome do Produto</label>
