@@ -31,7 +31,7 @@ export async function getUser(req, res) {
 
     return res.status(200).json(user);
   } catch (error) {
-    res.status(error.status | 500).json({ message: error.message });
+    res.status(error.status || 500).json({ message: error.message });
   }
 }
 
@@ -41,7 +41,7 @@ export async function listUsers(req, res) {
 
     return res.status(200).json(users);
   } catch (error) {
-    res.status(error.status | 500).json({ message: error.message });
+    res.status(error.status || 500).json({ message: error.message });
   }
 }
 
@@ -51,7 +51,7 @@ export async function getRoles(req, res) {
 
     return res.status(200).json(roles);
   } catch (error) {
-    res.status(error.status | 500).json({ message: error.message });
+    res.status(error.status || 500).json({ message: error.message });
   }
 }
 
@@ -63,6 +63,6 @@ export async function updateUserRole(req, res) {
 
     return res.status(200).json(result);
   } catch (error) {
-    res.status(error.status | 500).json({ message: error.message });
+    res.status(error.status || 500).json({ message: error.message });
   }
 }
