@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3333/api",
-  withCredentials: true
-})
+  baseURL: "https://teste-logsup.onrender.com/api",
+  withCredentials: true,
+});
+
+// http://localhost:3333/api
